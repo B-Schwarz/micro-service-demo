@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  archive:
+    build: worker/
+  web:
+    build: main/
+    environment:
+      - SERVICE_URL=http://archive:8080
+    depends_on:
+      - archive
+    ports:
+      - "5000:4000"

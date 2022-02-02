@@ -1,0 +1,4 @@
+This is a Book
+
+Author: {{.Name}}
+ID: {{.ID}}

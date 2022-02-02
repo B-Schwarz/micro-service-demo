@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+</head>
+<body>
+    <h1>Startseite</h1>
+    <label for="get-text">Get:</label>
+    <input type="text" id="get-text" />
+    <button onclick="get()">GET!</button>
+
+    <hr/>
+    <label for="set-name">Author:</label>
+    <input type="text" id="set-name" /><br/>
+    <label for="set-id">ID:</label>
+    <input type="text" id="set-id" /><br/>
+    <label for="set-temp">Template:</label>
+    <input type="number" min="0" max="2" id="set-temp" /><br/>
+    <button onclick="set()">SET!</button>
+
+    <script type="application/javascript">
+        function get() {
+            window.location.pathname = '/archive/' + document.getElementById('get-text').value
+        }
+
+        function set() {
+            const name = document.getElementById('set-name').value
+            const id = document.getElementById('set-id').value
+            const temp = Number(document.getElementById('set-temp').value)
+
+            fetch('/archive', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'name': name,
+                    'id': id,
+                    'template': temp
+                })
+            })
+            .then(() => {
+                window.location.pathname = '/archive/' + name
+            })
+        }
+    </script>
+</body>
+</html>

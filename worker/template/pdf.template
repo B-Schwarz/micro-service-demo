@@ -1,0 +1,10 @@
+\documentclass[12pt]{article}
+
+\title{DEMO}
+\author{[[.Name]]}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
